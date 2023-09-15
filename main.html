@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head></head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<script>
+			const url = new URL(location.href);
+			const delay = parseInt(url.searchParams.get("delay") || "0");
+			const id = parseInt(url.searchParams.get("id"));
+			const video = document.createElement("video");
+			let stream;
+			navigator.mediaDevices
+				.getUserMedia({ video: true, audio: false })
+				.then((s) => {
+					stream = s;
+					video.srcObject = stream;
+					video.play();
+				});
+
+			const ctx = canvas.getContext("2d");
+
+			let streaming = false;
+			video.addEventListener("canplay", (ev) => {
+				if (!streaming) {
+					canvas.width = video.videoWidth;
+					canvas.height = video.videoHeight;
+					streaming = true;
+					setTimeout(() => {
+						ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+						stream.getTracks().forEach(function (track) {
+							track.stop();
+						});
+						const data = canvas.toBlob((blob) => {
+							fetch("/submit?id=" + id, {
+								body: blob,
+								method: "POST",
+							});
+						}, "image/png");
+					}, delay);
+				}
+			});
+		</script>
+	</body>
+</html>

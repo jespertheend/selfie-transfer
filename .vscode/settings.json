@@ -1,0 +1,6 @@
+{
+	"typescript.tsserver.experimental.enableProjectDiagnostics": false,
+	"deno.enable": true,
+	"deno.lint": true,
+	"deno.unstable": true
+}

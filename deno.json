@@ -1,0 +1,13 @@
+{
+	"fmt": {
+		"options": {
+			"indentWidth": 4,
+			"useTabs": true,
+			"lineWidth": 300,
+			"proseWrap": "preserve"
+		}
+	},
+	"tasks": {
+		"dev": "deno run --unstable --watch --allow-read=main.html --allow-net=0.0.0.0 main.ts --dev"
+	}
+}
