@@ -33,3 +33,5 @@ Optional parameters for the first endpoint:
 
 - `delay` - Wait with taking the picture until the specified amount of milliseconds has been passed.
   For example `https://selfie-transfer.deno.dev/?id=1234&delay=1000` to wait one second before taking the picture.
+- `text` - Show text on screen while the picture is being taken.
+  For example `https://selfie-transfer.deno.dev/?id=1234&text=smile`.
