@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head></head>
+	<head>
+		<style>
+			body, html, #textContainer {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				font-family: ui-sans-serif,system-ui,sans-serif;
+			}
+			#textContainer {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+	</head>
 	<body>
-		<canvas id="canvas"></canvas>
+		<div id="textContainer"><h1 id="centerText"></h1></div>
+		<canvas id="canvas" style="display: none;"></canvas>
 		<script>
 			const url = new URL(location.href);
 			const delay = parseInt(url.searchParams.get("delay") || "0");
 			const id = parseInt(url.searchParams.get("id"));
+			const text = url.searchParams.get("text");
+			document.getElementById("centerText").textContent = text;
+
 			const video = document.createElement("video");
 			let stream;
 			navigator.mediaDevices
