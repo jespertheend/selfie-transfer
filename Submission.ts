@@ -23,6 +23,10 @@ export class Submission<T> {
 		return true;
 	}
 
+	get dataSubmitted() {
+		return this.#dataSubmitted;
+	}
+
 	waitForData() {
 		return this.#dataPromise;
 	}

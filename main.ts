@@ -22,6 +22,9 @@ Deno.serve(async (request) => {
 	}, SUBMISSION_LIFETIME);
 
 	if (url.pathname == "/") {
+		if (submission.dataSubmitted) {
+			return new Response("Already submitted", { status: 400 });
+		}
 		submission.refreshLifetime();
 		return serveFile(request, "main.html");
 	} else if (url.pathname == "/submit" && request.method == "POST") {
