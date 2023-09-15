@@ -9,7 +9,7 @@ Deno.serve(async (request) => {
 	const url = new URL(request.url);
 	const id = url.searchParams.get("id");
 	if (!id) {
-		return new Response("No id provided", { status: 404 });
+		return new Response("No id provided, visit https://github.com/jespertheend/selfie-transfer for info", { status: 404 });
 	}
 	let submission = submissions.get(id);
 	if (!submission) {
