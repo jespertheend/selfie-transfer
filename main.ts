@@ -38,7 +38,7 @@ Deno.serve(async (request) => {
 
 		return new Response(result, {
 			headers: {
-				"Content-Type": "text/plain",
+				"Content-Type": "image/png",
 			},
 		});
 	}
